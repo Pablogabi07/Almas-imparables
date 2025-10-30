@@ -1,0 +1,581 @@
+:root {
+  --color-primario: #ff6f00;
+  --color-fondo: #212121;
+  --color-texto: #ffffff;
+  --color-secundario: #ffab40;
+  --color-boton: #ff6f00;
+  --color-boton-hover: #e65c00;
+}
+
+/* Base */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  padding-top: 70px; /* igual a la altura del header */
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Header layout: logo izq, título centro, nav derecha */
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background-color: var(--color-primario);
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/* Left (logo) */
+.header-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+}
+
+.logo {
+  height: 46px;
+  width: auto;
+  display: block;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Center (título) */
+.header-center {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--color-texto);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* Right (nav + toggle) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+}
+
+/* Desktop nav (específico para header) */
+.header-nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.header-nav a {
+  color: var(--color-texto);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  transition: background-color 0.18s, color 0.18s;
+}
+
+.header-nav a:hover,
+.header-nav a:focus {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Quitar subrayado del título (enlace) */
+.site-title-link,
+.site-title-link:link,
+.site-title-link:visited,
+.site-title-link:hover,
+.site-title-link:active,
+.site-title-link:focus {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+/* Menu toggle (hamburger) — oculto por defecto en desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-texto);
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 0.25rem 0.6rem;
+}
+
+/* NAV (genérico) */
+nav {
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  overflow: hidden;
+  max-height: none;
+  opacity: 1;
+}
+
+nav a {
+  margin: 0 1rem;
+  color: var(--color-texto);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--color-secundario);
+}
+
+/* SECCIONES */
+section {
+  padding: 2rem;
+  scroll-margin-top: 80px;
+}
+
+h2 {
+  color: var(--color-secundario);
+}
+
+/* PRODUCTOS: GRID */
+.productos-lista {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  justify-content: center;
+}
+
+.producto {
+  background-color: #333;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 220px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.producto h4 {
+  margin: 0.5rem 0;
+  color: var(--color-secundario);
+}
+.producto p {
+  margin: 0.5rem 0;
+}
+
+.producto img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  margin-bottom: 0.5rem;
+}
+
+.producto button {
+  background-color: var(--color-boton);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.producto button:hover {
+  background-color: var(--color-boton-hover);
+}
+
+/* CARRITO: lista de items */
+.carrito-lista {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eee;
+  color: #000;
+  padding: 0.6rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-size: 0.95rem;
+}
+
+.carrito-item button {
+  background-color: #ff5252;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.85rem;
+  transition: background-color 0.3s;
+}
+
+.carrito-item button:hover {
+  background-color: #e53935;
+}
+
+.carrito-total {
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  text-align: right;
+}
+
+/* Botón flotante del carrito — subido y con safe-area para móviles */
+.carrito-flotante {
+  position: fixed;
+  bottom: calc(
+    env(safe-area-inset-bottom, 0px) + 80px
+  ); /* sube 80px sobre el borde / overlays */
+  right: 20px;
+  z-index: 2000; /* lo ponemos alto para que quede encima de overlays como el logo de CodeSandbox */
+  pointer-events: auto;
+}
+
+/* Ajuste visual del botón */
+.carrito-flotante button {
+  background-color: var(--color-secundario);
+  color: black;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s, transform 0.12s;
+}
+
+/* Hover */
+.carrito-flotante button:hover {
+  background-color: #ff9100;
+  transform: translateY(-2px);
+}
+
+/* Botones dentro del modal (excluye el botón cerrar) */
+.botones-carrito {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.botones-carrito button {
+  background-color: var(--color-primario);
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.85rem;
+  transition: background-color 0.3s;
+  width: auto;
+  max-width: 150px;
+}
+
+.botones-carrito button:hover {
+  background-color: var(--color-boton-hover);
+}
+
+/* MODAL: fondo y posicionamiento (considera header fijo) */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* arrancar debajo del header */
+  padding-top: 70px; /* empuja modal debajo del header fijo */
+  z-index: 1090;
+}
+
+/* Botón cerrar (X) — personalizado, aislado de reglas globales */
+.cerrar-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background-color: #ccc;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s, transform 0.12s;
+  z-index: 1110;
+}
+
+.cerrar-modal:hover {
+  background-color: #bbb;
+  transform: scale(1.03);
+}
+
+/* Modal contenido: tarjeta centrada y compacta */
+.modal-contenido {
+  position: relative;
+  background-color: #fff;
+  color: #000;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 380px;
+  max-height: calc(80vh - 20px);
+  overflow-y: auto;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.modal-contenido h3 {
+  margin-top: 0;
+  color: var(--color-primario);
+}
+.modal-contenido ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+.modal-contenido li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Estilos generales para botones dentro del modal (excluyendo .cerrar-modal) */
+.modal-contenido button:not(.cerrar-modal) {
+  background-color: var(--color-primario);
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  margin: 0.3rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.85rem;
+  transition: background-color 0.3s;
+  display: inline-block;
+  width: auto;
+  max-width: 150px;
+}
+
+.modal-contenido button:not(.cerrar-modal):hover {
+  background-color: var(--color-boton-hover);
+}
+
+/* Notificación */
+.notificacion {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  background-color: var(--color-secundario);
+  color: black;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  animation: fadeInOut 2s ease forwards;
+  z-index: 1120;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .productos-lista {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Móvil / tablet pequeño: menú hamburguesa visible, nav horizontal oculta */
+@media (max-width: 768px) {
+  .site-header {
+    height: 60px;
+  }
+  .logo {
+    height: 40px;
+  }
+  .site-title {
+    font-size: 1rem;
+  }
+
+  /* Ocultar la navegación horizontal del header en móvil */
+  .header-nav {
+    display: none;
+  }
+
+  /* Mostrar botón hamburguesa */
+  .menu-toggle {
+    display: inline-flex;
+    background: none;
+    border: none;
+    color: var(--color-texto);
+    font-size: 1.8rem;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1105;
+    padding: 0.25rem;
+  }
+
+  /* MENÚ DESPLEGABLE: ocupa ancho completo por debajo del header */
+  .menu-desplegable {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-primario);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 0;
+    z-index: 1100;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  }
+
+  .menu-desplegable.activo {
+    max-height: 320px;
+    opacity: 1;
+  }
+
+  .menu-desplegable a {
+    margin: 0.4rem 0;
+    text-align: center;
+    font-size: 1.05rem;
+    color: var(--color-texto);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background 0.18s, color 0.18s;
+  }
+
+  .menu-desplegable a:hover,
+  .menu-desplegable a:focus {
+    background-color: var(--color-secundario);
+    color: black;
+  }
+
+  /* Productos: 2 columnas en móvil */
+  .producto {
+    width: 90%;
+  }
+  .productos-lista {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Modal ajustado a ancho móvil, pero mantener X pequeño */
+  .modal-contenido {
+    width: 90%;
+    padding: 1.2rem;
+  }
+  .modal {
+    align-items: flex-start;
+    padding-top: 70px;
+  }
+
+  /* Botones del modal ocupan ancho completo */
+  .modal-contenido button:not(.cerrar-modal) {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  /* Forzar tamaño del cerrar-modal para que no se estire en móvil */
+  .cerrar-modal {
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .carrito-flotante button {
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 420px) {
+  header h1 {
+    font-size: 1.4rem;
+  }
+  .modal-contenido {
+    padding: 1rem;
+  }
+  .cerrar-modal {
+    top: 8px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+}
